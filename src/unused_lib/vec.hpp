@@ -1,8 +1,7 @@
 #ifndef TVEC
 #define TVEC
-
-#include <math.h>
 #include <iostream>
+#include <math.h>
 #include <raylib.h>
 
 inline double random_double_d() {

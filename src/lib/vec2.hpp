@@ -14,9 +14,6 @@ class vec2 {
     inline float x() const {return e[0]; }
     inline float y() const {return e[1]; }
 
-    inline float r() const {return e[0]; }
-    inline float g() const {return e[1]; }
-
     inline const vec2& operator+() const {return * this; }
     inline vec2 operator-() const {return vec2(-e[0], -e[1]); }
     inline float operator[] (int i) const {return e[i];}
@@ -32,13 +29,6 @@ class vec2 {
     inline double length() const { return sqrt(e[0]*e[0] + e[1]*e[1]); }
     inline double squared_length() const { return e[0]*e[0] + e[1]*e[1]; }
 
-    
-
-    bool near_zero() const {
-        auto s = 1e-8;
-        return (fabs(e[0]) < s) && (fabs(e[1])<s) && (fabs(e[2])<s);
-    }
-
     Vector2 toRayVec() {
         return (Vector2){
             (float)e[0],
@@ -46,7 +36,6 @@ class vec2 {
         };
     }
 
-    inline void make_unit_vector();
 };
 
 inline vec2 operator+(const vec2 &v1, const vec2 &v2) {//Vector+Vector
@@ -79,6 +68,12 @@ inline vec2& vec2::operator+=(const vec2 &v) {
     return *this;
 }
 
+inline vec2& vec2::operator-=(const vec2 &v) {
+    e[0]-=v[0];
+    e[1]-=v[1];
+    return *this;
+}
+
 inline vec2& vec2::operator*=(const vec2 &v) {
     e[0]*=v[0];
     e[1]*=v[1];
@@ -91,9 +86,13 @@ inline vec2& vec2::operator/=(const vec2 &v) {
     return *this;
 }
 
-inline vec2& vec2::operator-=(const vec2 &v) {
-    e[0]-=v[0];
-    e[1]-=v[1];
+inline vec2& vec2::operator*=(const float t) {
+    e[0]*=t;
+    e[1]*=t;
     return *this;
 }
+
+
+
+
 #endif

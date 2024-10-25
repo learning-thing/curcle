@@ -1,18 +1,16 @@
-#include <iostream>
+
 #include <raylib.h>
 #include "curcle.hpp"
 
 int main() {
-    std::cout << "hello world\n";
+    //std::cout << "hello world\n";
     int collisions = 0;
     int points = 0;
     SetWindowState(FLAG_VSYNC_HINT);
     InitWindow(GetMonitorWidth(0), GetMonitorHeight(0), "I'm a curcle");
     ToggleFullscreen();
     curcle c(WHITE);
-    //Enemy e(100, 100);
-
-    enemyManager em(50);
+    enemyManager em(0);
     Victory v;
 
     while (!WindowShouldClose()) {
